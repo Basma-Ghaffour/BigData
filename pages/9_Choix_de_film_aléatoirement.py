@@ -10,12 +10,16 @@ st.set_page_config(layout="wide")
 
 @st.cache_data
 def charger_json():
-    chemin_fichier = "C:\\Users\\basma\\Desktop\\Master 2\\semestre 2\\Projet_Big_Data2\\Scrapping\\data_2_all_movie.json"
+    chemin_fichier = "Scrapping\\data_2_all_movie.json"
     df = pd.read_json(chemin_fichier)
     return df
 
 
 df = charger_json()
+
+
+df['imageRep'] = df['imageRep'].apply(lambda x: '\\'.join(x.split('\\')[-3:]))#changement du liens pour le deploiment
+
 
 import random
 
@@ -92,7 +96,7 @@ if bouton:
 #   st.table(ligne_selectionnee)
 @st.cache_data
 def charger_json2():
-    chemin_fichier = "C:\\Users\\basma\\Desktop\\Master 2\\semestre 2\\Projet_Big_Data2\\Scrapping\\data_commentaire_prov.json"
+    chemin_fichier = "Scrapping\\data_commentaire_prov.json"
     df = pd.read_json(chemin_fichier)
     return df
 
@@ -116,3 +120,5 @@ if bouton:
                 "fontSize": 20,
             },
         )
+
+

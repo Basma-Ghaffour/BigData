@@ -7,7 +7,7 @@ st.set_page_config(page_title="Première page")
 
 @st.cache_data
 def charger_json():
-    chemin_fichier = "C:\\Users\\basma\\Desktop\\Master 2\\semestre 2\\Projet_Big_Data2\\Scrapping\\data_2_all_movie.json"
+    chemin_fichier = "Scrapping\\data_2_all_movie.json"
     df = pd.read_json(chemin_fichier)
     return df
 
