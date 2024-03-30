@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "applications"
+version = "0.1.0"
+description = "Application film"
+authors = ["Basma-G <127091566+Basma-Ghaffour@users.noreply.github.com>"]
+license = "CC BY-NC"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "yes"
+streamlit = "^1.32.2"
+pandas = "^2.2.1"
+plotly = "^5.20.0"
+numpy = "^1.26.4"
+streamlit-elements = "^0.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+pytest = "^8.1.1"
+mypy = "^1.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
