@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import random
 from streamlit_elements import elements, mui, html
+import os
 
 
 st.set_page_config(layout="wide")
@@ -10,7 +11,9 @@ st.set_page_config(layout="wide")
 
 @st.cache_data
 def charger_json():
-    chemin_fichier = "Scrapping\\data_2_all_movie.json"
+    repertoire_base = os.getcwd()
+    chemin_repertoire_scrapping = os.path.join(repertoire_base, "Scrapping")
+    chemin_fichier = os.path.join(chemin_repertoire_scrapping, "data_2_all_movie.json")
     df = pd.read_json(chemin_fichier)
     return df
 
@@ -43,8 +46,10 @@ if bouton:
     nombre_aleatoire = random.randint(0, 99)
     ligne_select = df.iloc[nombre_aleatoire]
     with colonne_1:
-        chemin_image_rd = ligne_select["imageRep"]
-        st.image(chemin_image_rd, caption="", width=325)
+        chemin_image= ligne_select["imageRep"]
+        repertoire=os.getcwd()
+        chemin_image=os.path.join(repertoire,chemin_image)
+        st.image(chemin_image, caption="", width=325)
 
     with colonne_2:
         st.write("")
@@ -96,10 +101,11 @@ if bouton:
 #   st.table(ligne_selectionnee)
 @st.cache_data
 def charger_json2():
-    chemin_fichier = "Scrapping\\data_commentaire_prov.json"
+    repertoire_base = os.getcwd()
+    chemin_repertoire_scrapping = os.path.join(repertoire_base, "Scrapping")
+    chemin_fichier = os.path.join(chemin_repertoire_scrapping, "data_commentaire_prov.json")
     df = pd.read_json(chemin_fichier)
     return df
-
 
 df2 = charger_json2()
 

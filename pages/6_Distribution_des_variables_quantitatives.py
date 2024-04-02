@@ -1,15 +1,19 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.set_page_config(page_title="Première page")
 
 
 @st.cache_data
 def charger_json():
-    chemin_fichier = "Scrapping\\data_2_all_movie.json"
+    repertoire_base = os.getcwd()
+    chemin_repertoire_scrapping = os.path.join(repertoire_base, "Scrapping")
+    chemin_fichier = os.path.join(chemin_repertoire_scrapping, "data_2_all_movie.json")
     df = pd.read_json(chemin_fichier)
     return df
+
 
 
 df = charger_json()

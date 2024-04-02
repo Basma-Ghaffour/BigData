@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import random
 from streamlit_elements import elements, mui, html
+import os
 
 
 st.set_page_config(layout="wide", page_title="app")
@@ -10,7 +11,9 @@ st.set_page_config(layout="wide", page_title="app")
 
 @st.cache_data
 def charger_json():
-    chemin_fichier = "Scrapping\\data_2_all_movie.json"
+    repertoire_base = os.getcwd()
+    chemin_repertoire_scrapping = os.path.join(repertoire_base, "Scrapping")
+    chemin_fichier = os.path.join(chemin_repertoire_scrapping, "data_2_all_movie.json")
     df = pd.read_json(chemin_fichier)
     return df
 
@@ -18,6 +21,7 @@ def charger_json():
 df = charger_json()
 
 df['imageRep'] = df['imageRep'].apply(lambda x: '\\'.join(x.split('\\')[-3:]))#changement du liens pour le deploiment
+
 
 colonne_1, colonne_2, colonne_3 = st.columns([0.31, 0.06, 0.67])
 
@@ -146,6 +150,8 @@ with colonne_3:
             chemin_image = df_select[df_select["titre"] == film_select].iloc[0][
                 "imageRep"
             ]
+            repertoire=os.getcwd()
+            chemin_image=os.path.join(repertoire,chemin_image)
             st.image(chemin_image, caption="", width=300)
 
     with colonne_12:
@@ -214,9 +220,12 @@ with colonne_3:
 
 @st.cache_data
 def charger_json2():
-    chemin_fichier = "Scrapping\\data_commentaire_prov.json"
+    repertoire_base = os.getcwd()
+    chemin_repertoire_scrapping = os.path.join(repertoire_base, "Scrapping")
+    chemin_fichier = os.path.join(chemin_repertoire_scrapping, "data_commentaire_prov.json")
     df = pd.read_json(chemin_fichier)
     return df
+
 
 
 df2 = charger_json2()
