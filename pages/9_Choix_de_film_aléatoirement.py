@@ -128,5 +128,3 @@ if bouton:
             },
         )
 
-st.write(df)
-
