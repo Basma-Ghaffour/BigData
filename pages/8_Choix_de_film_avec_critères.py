@@ -153,7 +153,7 @@ with colonne_3:
             ]
             repertoire=os.getcwd()
             chemin_image=os.path.join(repertoire,chemin_image)
-            st.image(chemin_image, caption="", width=300)
+            st.image(chemin_image, caption="", width=325)
 
     with colonne_12:
         st.write("")
