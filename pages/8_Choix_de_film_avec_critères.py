@@ -21,6 +21,7 @@ def charger_json():
 df = charger_json()
 
 df['imageRep'] = df['imageRep'].apply(lambda x: '\\'.join(x.split('\\')[-3:]))#changement du liens pour le deploiment
+df['imageRep'] = df['imageRep'].apply(lambda x: x.replace('\\', '/'))
 
 
 colonne_1, colonne_2, colonne_3 = st.columns([0.31, 0.06, 0.67])
