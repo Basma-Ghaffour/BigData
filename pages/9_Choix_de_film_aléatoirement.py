@@ -47,9 +47,7 @@ if bouton:
     nombre_aleatoire = random.randint(0, 99)
     ligne_select = df.iloc[nombre_aleatoire]
     with colonne_1:
-        chemin_image = df_select[df_select["titre"] == film_select].iloc[0][
-                "imageRep"
-            ]
+        chemin_image= ligne_select["imageRep"]
         repertoire=os.getcwd()
         chemin_image=os.path.join(repertoire,chemin_image)
         st.image(chemin_image, caption="", width=325)
