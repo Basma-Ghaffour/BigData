@@ -22,6 +22,7 @@ df = charger_json()
 
 
 df['imageRep'] = df['imageRep'].apply(lambda x: '\\'.join(x.split('\\')[-3:]))#changement du liens pour le deploiment
+df['imageRep'] = df['imageRep'].apply(lambda x: x.replace('\\', '/'))
 
 
 import random
@@ -48,7 +49,6 @@ if bouton:
     with colonne_1:
         repertoire=os.getcwd()
         chemin_image=os.path.join(repertoire,chemin_image)
-        chemin_image=os.path.normpath(chemin_image)
         st.image(chemin_image, caption="", width=325)
 
     with colonne_2:
